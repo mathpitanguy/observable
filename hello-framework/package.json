@@ -9,6 +9,9 @@
     "observable": "observable"
   },
   "dependencies": {
+    "@finos/perspective": "^3.8.0",
+    "@finos/perspective-viewer": "^3.8.0",
+    "@finos/perspective-viewer-datagrid": "^3.8.0",
     "@observablehq/framework": "^1.13.4",
     "d3-dsv": "^3.0.1",
     "d3-time-format": "^4.1.0"
