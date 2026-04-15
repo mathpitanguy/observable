@@ -137,3 +137,42 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# --- Python ---
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Packages
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+bin/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+
+# Environments (Virtualenv)
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Django / Flask specific (opcional, mas recomendado)
+.env
+.venv
+.flaskenv
+db.sqlite3
+*.sqlite3
+
+# Jupyter Notebooks
+.ipynb_checkpoints
