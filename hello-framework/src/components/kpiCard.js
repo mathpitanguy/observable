@@ -13,12 +13,14 @@ const fmtPct = v => (v >= 0 ? "+" : "") + d3.format(".1%")(v);
 export function KpiCard({
   label,
   value,
-  format = "brl",
+  format      = "brl",
   subtitle,
-  color = "#2563eb",
-  icon = "📊",
+  color       = "#2563eb",
+  icon        = "📊",
   trend,
   trendLabel,
+  labelSize   = "11px",
+  labelWeight = "600",
 } = {}) {
   const formatted =
     format === "brl" ? fmtBRL(value) :
@@ -36,9 +38,9 @@ export function KpiCard({
     height:100%;box-sizing:border-box;
   ">
     <div style="display:flex;align-items:center;gap:8px;">
-      <span style="font-size:20px">${icon}</span>
+      ${icon ? html`<span style="font-size:20px">${icon}</span>` : ""}
       <span style="
-        font-size:11px;font-weight:600;text-transform:uppercase;
+        font-size:${labelSize};font-weight:${labelWeight};text-transform:uppercase;
         letter-spacing:.06em;color:var(--theme-foreground-muted,#64748b);
       ">${label}</span>
     </div>

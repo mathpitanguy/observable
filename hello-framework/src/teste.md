@@ -11,6 +11,12 @@ import { html }               from "npm:htl";
 import { KpiCard }            from "./components/kpiCard.js";
 import { buildTable }         from "./components/revenueTable.js";
 import { HorizontalBarChart } from "./components/revenueChart.js";
+import {
+  buildPivotTable,
+  DIMENSOES,
+  METRICAS_CAMPOS,
+  AGREGACOES,
+}                             from "./components/pivotTable.js";
 ```
 
 ```js
@@ -266,6 +272,69 @@ buildTable(allFiltered, { fmtBRL, fmtN })
   </div>
 </div>
 
+---
+
+## Tabela Interativa
+
+```js
+// ── Controles da pivot ───────────────────────────────────────────────────────
+const pvInputDim = Inputs.select(
+  DIMENSOES.map(d => d.key),
+  {
+    label  : null,
+    format : key => DIMENSOES.find(d => d.key === key)?.label ?? key,
+    value  : "uo_sigla",
+  }
+);
+
+const pvInputCampo = Inputs.select(
+  METRICAS_CAMPOS.map(d => d.key),
+  {
+    label  : null,
+    format : key => METRICAS_CAMPOS.find(d => d.key === key)?.label ?? key,
+    value  : "val2027",
+  }
+);
+
+const pvInputAgreg = Inputs.select(
+  AGREGACOES.map(d => d.key),
+  {
+    label  : null,
+    format : key => AGREGACOES.find(d => d.key === key)?.label ?? key,
+    value  : "soma",
+  }
+);
+```
+
+```js
+const pvDim   = Generators.input(pvInputDim);
+const pvCampo = Generators.input(pvInputCampo);
+const pvAgreg = Generators.input(pvInputAgreg);
+```
+
+<div class="grid grid-cols-3">
+  <div class="filtro-bloco">
+    <span class="filtro-label">Agrupar por (Dimensão)</span>
+    ${pvInputDim}
+  </div>
+  <div class="filtro-bloco">
+    <span class="filtro-label">Campo de Valor</span>
+    ${pvInputCampo}
+  </div>
+  <div class="filtro-bloco">
+    <span class="filtro-label">Agregação</span>
+    ${pvInputAgreg}
+  </div>
+</div>
+
+```js
+buildPivotTable(allFiltered, {
+  dimKey   : pvDim,
+  campoKey : pvCampo,
+  agregKey : pvAgreg,
+})
+```
+
 <style>
 /* ══════════════════════════════════════════
    CABEÇALHO — gradiente bordô institucional
@@ -419,5 +488,13 @@ h2 {
 .filtro-bloco .observablehq--input input[type="text"]::placeholder {
   color  : var(--theme-foreground-faint, #94a3b8);
   opacity: 1;
+}
+
+/* ══════════════════════════════════════════
+   PIVOT — select sem label herda filtro-bloco
+══════════════════════════════════════════ */
+.filtro-bloco .observablehq--input select {
+  appearance    : auto;
+  cursor        : pointer;
 }
 </style>
