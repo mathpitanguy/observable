@@ -1,4 +1,3 @@
-// components/revenueChart.js
 import { html } from "npm:htl";
 import * as Plot from "npm:@observablehq/plot";
 import * as d3   from "npm:d3";
@@ -13,18 +12,6 @@ const fmtAxis = v =>
   v >= 1e9 ? d3.format(",.1f")(v / 1e9) + "Bi"
            : d3.format(",.1f")(v / 1e6) + "Mi";
 
-// ─────────────────────────────────────────────────────────────────────────────
-/**
- * HorizontalBarChart
- * Retorna um Plot.plot() para uso dentro de resize() no .md.
- *
- * @param {Array}  data          [{nome, valor}, …] ordenado desc
- * @param {object} opts
- * @param {number} opts.width
- * @param {string} [opts.fill="#3b82f6"]
- * @param {string} [opts.xField="valor"]
- * @param {string} [opts.yField="nome"]
- */
 export function HorizontalBarChart(
   data,
   { width, fill = "#3b82f6", xField = "valor", yField = "nome" } = {}
@@ -42,17 +29,8 @@ export function HorizontalBarChart(
     marginTop   : 24,
     marginBottom: 8,
     style: { fontFamily: "var(--sans-serif,system-ui)", fontSize: "11px", background: "transparent" },
-    x: {
-      label: null,
-      axis: "top",
-      tickFormat: fmtAxis,
-      tickSize: 3,
-    },
-    y: {
-      label: null,
-      domain: data.map(d => d[yField]),
-      tickSize: 0,
-    },
+    x: { label: null, axis: "top", tickFormat: fmtAxis, tickSize: 3 },
+    y: { label: null, domain: data.map(d => d[yField]), tickSize: 0 },
     marks: [
       Plot.barX(data, {
         x: xField, y: yField,
@@ -71,19 +49,6 @@ export function HorizontalBarChart(
   });
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-/**
- * GroupedBarChart
- * Barras agrupadas para comparar duas séries (ex: previsto vs realizado).
- *
- * @param {Array}  data   dados "longos": [{categoria, grupo, valor}, …]
- * @param {object} opts
- * @param {number} opts.width
- * @param {string} [opts.xField="valor"]
- * @param {string} [opts.yField="categoria"]
- * @param {string} [opts.fyField="grupo"]
- * @param {string[]} [opts.colorRange]
- */
 export function GroupedBarChart(
   data,
   {
@@ -130,18 +95,6 @@ export function GroupedBarChart(
   });
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-/**
- * ExecutionDonut
- * Rosca SVG com percentual de execução no centro.
- *
- * @param {number} realizado
- * @param {number} previsto
- * @param {object} opts
- * @param {number} opts.width
- * @param {string} [opts.colorRealized="#059669"]
- * @param {string} [opts.colorRemainder="#e2e8f0"]
- */
 export function ExecutionDonut(
   realizado,
   previsto,
