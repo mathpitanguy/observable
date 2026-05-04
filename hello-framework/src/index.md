@@ -132,26 +132,31 @@ const corEvolucao = {
 ```js
 // FileAttachment garante que o Observable inclui a imagem no build.
 // Coloque o arquivo em: src/assets/logo_governo_minas.png
-const logoUrl = await FileAttachment("assets/logo_governo_minas.png").url();
+const logoUrl = await FileAttachment("assets/logo_minas.jpg").url();
 ```
 
 ```js
-// Cabeçalho montado em JS para que ${logoUrl} seja resolvido corretamente
+// Cabeçalho montado em JS
 const cabecalho = html`
-  <div class="dash-header">
-    <div class="dash-header-spacer"></div>
-    <div class="dash-header-center">
-      <p class="dash-eyebrow">SEPLAG — SPLOR</p>
-      <h1 class="dash-title">PAINEL LDO</h1>
+  <div class="dash-header" style="display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 10px 0;">
+
+    <!-- Spacer para equilíbrio -->
+    <div class="dash-header-spacer" style="flex: 1;"></div>
+
+    <div class="dash-header-center" style="flex: 2; text-align: center;">
+      <!-- Cor alterada para #aaa (mais clara) -->
+      <p class="dash-eyebrow" style="margin: 0; font-size: 0.9rem; color: #aaa; font-weight: 500;">SEPLAG — SPLOR</p>
+      <h1 class="dash-title" style="margin: 0; font-size: 2rem; color: #1a1a1a;">PAINEL LDO</h1>
     </div>
-    <div class="dash-header-logo">
-      <img src="${logoUrl}" alt="Governo de Minas Gerais" class="dash-logo" />
+
+    <div class="dash-header-logo" style="flex: 1; display: flex; justify-content: flex-end; padding-right: 40px;">
+      <!-- padding-right: 40px empurra a logo para a esquerda -->
+      <img src="${logoUrl}" alt="Governo de Minas Gerais" class="dash-logo" style="height: 85px; width: auto;" />
     </div>
+
   </div>
 `;
 ```
-
-<!--- cabeçalho renderizado via JS -->
 
 ```js
 cabecalho
