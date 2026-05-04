@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="generator" content="Observable Framework v1.13.4">
+<title>Painel LDO</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_observablehq/theme-air,near-midnight,alt,wide.9b64840a.css">
+<link rel="preload" as="style" href="./_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_observablehq/theme-air,near-midnight,alt,wide.9b64840a.css">
+<link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="modulepreload" href="./_observablehq/client.cdf3d818.js">
+<link rel="modulepreload" href="./_observablehq/runtime.607a8173.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.35e288a3.js">
+<link rel="modulepreload" href="./_npm/d3@7.9.0/66d82917.js">
+<link rel="modulepreload" href="./_npm/@observablehq/plot@0.6.17/a96a6bbb.js">
+<link rel="modulepreload" href="./_npm/htl@0.3.1/72f4716c.js">
+<link rel="modulepreload" href="./_import/components/kpiCard.3cbe99cb.js">
+<link rel="modulepreload" href="./_import/components/revenueTable.8f08975d.js">
+<link rel="modulepreload" href="./_import/components/revenueChart.3a792551.js">
+<link rel="modulepreload" href="./_import/components/pivotTable.2c5fa5d6.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/inputs.1444d967.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/9cffc2bd.js">
+<link rel="modulepreload" href="./_npm/isoformat@0.2.1/18cbf477.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/e93ca09f.js">
+<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/0f2de24d.js">
+<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/65eb105b.js">
+<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/7ef8fb2e.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/aeb57b94.js">
+<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/1d2aed74.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/87adea64.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/9ba9c7f3.js">
+<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/4202580c.js">
+<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/cdd7e898.js">
+<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/b4e2ad9a.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/5e804d15.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.2/3785bf2d.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/40599fb3.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/e49e792c.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/8d1e5425.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/20d3f133.js">
+<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/7553081f.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/0dfd751c.js">
+<link rel="modulepreload" href="./_npm/d3-random@3.0.1/3c90ee06.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/720b7f0a.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/ba24c2e7.js">
+<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/4d94e5b7.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/6d3a6726.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/9f03c579.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/07c9626f.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/b58a267d.js">
+<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/004da2ac.js">
+<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/b5786b3f.js">
+<link rel="modulepreload" href="./_npm/interval-tree-1d@1.0.4/53fe8176.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/e08981d9.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.1.0/d4ec0aa1.js">
+<link rel="modulepreload" href="./_npm/binary-search-bounds@2.0.5/cbf6ba23.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.3/42820bfa.js">
+<link rel="icon" href="./_file/observable.1af93621.png" type="image/png" sizes="32x32">
+<script type="module">
+
+import {define} from "./_observablehq/client.cdf3d818.js";
+import {registerFile} from "./_observablehq/stdlib.35e288a3.js";
+
+registerFile("./assets/logo_minas.jpg", {"name":"./assets/logo_minas.jpg","mimeType":"image/jpeg","path":"./_file/assets/logo_minas.292598d6.jpg","lastModified":1777917119510,"size":3403});
+registerFile("./data/receita_analise.csv", {"name":"./data/receita_analise.csv","mimeType":"text/csv","path":"./_file/data/receita_analise.bce17b56.csv","lastModified":1777420701878,"size":432941});
+
+define({id: "0b3c836e", outputs: ["d3","Plot","html","KpiCard","buildTable","HorizontalBarChart","buildPivotTable","DIMENSOES","METRICAS_CAMPOS","AGREGACOES"], body: async () => {
+const [d3, Plot, {html}, {KpiCard}, {buildTable}, {HorizontalBarChart}, {buildPivotTable, DIMENSOES, METRICAS_CAMPOS, AGREGACOES}] = await Promise.all([import("./_npm/d3@7.9.0/66d82917.js"), import("./_npm/@observablehq/plot@0.6.17/a96a6bbb.js"), import("./_npm/htl@0.3.1/72f4716c.js"), import("./_import/components/kpiCard.3cbe99cb.js"), import("./_import/components/revenueTable.8f08975d.js"), import("./_import/components/revenueChart.3a792551.js"), import("./_import/components/pivotTable.2c5fa5d6.js")]);
+
+return {d3,Plot,html,KpiCard,buildTable,HorizontalBarChart,buildPivotTable,DIMENSOES,METRICAS_CAMPOS,AGREGACOES};
+}});
+
+define({id: "8a9b0c55", inputs: ["FileAttachment"], outputs: ["rawReceitas","receitas"], body: async (FileAttachment) => {
+const rawReceitas = await FileAttachment("./data/receita_analise.csv").csv({ typed: true });
+
+const receitas = rawReceitas.map(d => ({
+  ...d,
+  val2024  : +d["2024"]              || 0,
+  val2025  : +d["2025"]              || 0,
+  val2026  : +d["reestimativa_2026"] || 0,
+  siafi2026: +d["siafi_2026"]        || 0,
+  val2027  : +d["2027"]              || 0,
+}));
+return {rawReceitas,receitas};
+}});
+
+define({id: "65b4b6ce", inputs: ["receitas"], outputs: ["uoOpcoes","fonteOpcoes","alertasArr"], body: (receitas) => {
+// Listas únicas para os datalists
+const uoOpcoes    = [...new Set(receitas.map(d => d.uo_sigla).filter(Boolean))].sort();
+const fonteOpcoes = [...new Set(receitas.map(d => d.fonte_desc).filter(Boolean))].sort();
+const alertasArr  = [...new Set(receitas.map(d => d.alertas).filter(Boolean))].sort();
+return {uoOpcoes,fonteOpcoes,alertasArr};
+}});
+
+define({id: "66fc64d9", inputs: ["Inputs","uoOpcoes","fonteOpcoes","alertasArr"], outputs: ["inputUO","inputFonte","inputAlerta"], body: (Inputs,uoOpcoes,fonteOpcoes,alertasArr) => {
+// Filtro UO — texto livre + datalist (dropdown ao clicar + digitação livre)
+const inputUO = Inputs.text({
+  placeholder: "Digite ou selecione a UO…",
+  datalist   : uoOpcoes,
+  spellcheck : false,
+});
+
+// Filtro Fonte — texto livre + datalist (dropdown ao clicar + digitação livre)
+const inputFonte = Inputs.text({
+  placeholder: "Digite ou selecione a fonte…",
+  datalist   : fonteOpcoes,
+  spellcheck : false,
+});
+
+// Filtro Alerta — select com todas as opções
+const inputAlerta = Inputs.select(
+  ["Todos", ...alertasArr],
+  { label: null }
+);
+return {inputUO,inputFonte,inputAlerta};
+}});
+
+define({id: "dfa758e4", inputs: ["Generators","inputUO","inputFonte","inputAlerta"], outputs: ["filterUO","filterFonte","filterAlerta"], body: (Generators,inputUO,inputFonte,inputAlerta) => {
+const filterUO     = Generators.input(inputUO);
+const filterFonte  = Generators.input(inputFonte);
+const filterAlerta = Generators.input(inputAlerta);
+return {filterUO,filterFonte,filterAlerta};
+}});
+
+define({id: "a4ddd4a6", inputs: ["receitas","filterUO","filterFonte","filterAlerta"], outputs: ["allFiltered"], body: (receitas,filterUO,filterFonte,filterAlerta) => {
+const allFiltered = receitas.filter(d => {
+  if (filterUO    && !String(d.uo_sigla   ?? "").toLowerCase().includes(filterUO.toLowerCase()))    return false;
+  if (filterFonte && !String(d.fonte_desc ?? "").toLowerCase().includes(filterFonte.toLowerCase())) return false;
+  if (filterAlerta !== "Todos" && d.alertas !== filterAlerta)                                        return false;
+  return true;
+});
+return {allFiltered};
+}});
+
+define({id: "02dd4550", inputs: ["d3","allFiltered"], outputs: ["fmtBRL","fmtPct","fmtN","sum2025","sum2026","sumSiafi","sum2027","varPct2526","varPct2627","execPct","nLinhas","normalizar","nOK","nDiscrepantes","nAtencao"], body: (d3,allFiltered) => {
+const fmtBRL = v => new Intl.NumberFormat("pt-BR", {
+  style: "currency", currency: "BRL", notation: "compact", maximumFractionDigits: 2,
+}).format(v);
+const fmtPct = v => (v >= 0 ? "+" : "") + d3.format(".1%")(v);
+const fmtN   = v => new Intl.NumberFormat("pt-BR").format(v);
+
+const sum2025    = d3.sum(allFiltered, d => d.val2025);
+const sum2026    = d3.sum(allFiltered, d => d.val2026);
+const sumSiafi   = d3.sum(allFiltered, d => d.siafi2026);
+const sum2027    = d3.sum(allFiltered, d => d.val2027);
+const varPct2526 = sum2025 > 0 ? (sum2026 - sum2025) / sum2025 : 0;
+const varPct2627 = sum2026 > 0 ? (sum2027 - sum2026) / sum2026 : 0;
+const execPct    = sum2026 > 0 ? sumSiafi / sum2026 : 0;
+const nLinhas    = allFiltered.length;
+
+const normalizar = s =>
+  String(s ?? "").toUpperCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+const nOK           = allFiltered.filter(d => normalizar(d.alertas) === "OK").length;
+const nDiscrepantes = allFiltered.filter(d => normalizar(d.alertas) === "VALOR DISCREPANTE").length;
+const nAtencao      = allFiltered.filter(d => normalizar(d.alertas) === "ATENCAO").length;
+return {fmtBRL,fmtPct,fmtN,sum2025,sum2026,sumSiafi,sum2027,varPct2526,varPct2627,execPct,nLinhas,normalizar,nOK,nDiscrepantes,nAtencao};
+}});
+
+define({id: "9f711d8c", inputs: ["d3","allFiltered","sum2025","sum2026","sumSiafi","sum2027"], outputs: ["topUOs","evolucao","corEvolucao"], body: (d3,allFiltered,sum2025,sum2026,sumSiafi,sum2027) => {
+const topUOs = d3.rollups(
+  allFiltered.filter(d => d.uo_sigla),
+  v => d3.sum(v, d => d.val2027),
+  d => d.uo_sigla
+)
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 10)
+  .map(([nome, valor]) => ({ nome, valor }));
+
+const evolucao = [
+  { ano: "2024",       valor: d3.sum(allFiltered, d => d.val2024) },
+  { ano: "2025",       valor: sum2025  },
+  { ano: "2026 Reest", valor: sum2026  },
+  { ano: "SIAFI 2026", valor: sumSiafi },
+  { ano: "2027 LDO",   valor: sum2027  },
+].filter(d => d.valor > 0);
+
+const corEvolucao = {
+  "2024"      : "#c0392b",
+  "2025"      : "#a93226",
+  "2026 Reest": "#922b21",
+  "SIAFI 2026": "#6e1f1a",
+  "2027 LDO"  : "#4a1010",
+};
+return {topUOs,evolucao,corEvolucao};
+}});
+
+define({id: "3a2bc0ca", inputs: ["FileAttachment"], outputs: ["logoUrl"], body: async (FileAttachment) => {
+// FileAttachment garante que o Observable inclui a imagem no build.
+// Coloque o arquivo em: src/assets/logo_governo_minas.png
+const logoUrl = await FileAttachment("./assets/logo_minas.jpg").url();
+return {logoUrl};
+}});
+
+define({id: "0098b0c8", inputs: ["html","logoUrl"], outputs: ["cabecalho"], body: (html,logoUrl) => {
+// Cabeçalho montado em JS
+const cabecalho = html`
+  <div class="dash-header" style="display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 10px 0;">
+
+    <!-- Spacer para equilíbrio -->
+    <div class="dash-header-spacer" style="flex: 1;"></div>
+
+    <div class="dash-header-center" style="flex: 2; text-align: center;">
+      <!-- Cor alterada para #aaa (mais clara) -->
+      <p class="dash-eyebrow" style="margin: 0; font-size: 0.9rem; color: #aaa; font-weight: 500;">SEPLAG — SPLOR</p>
+      <h1 class="dash-title" style="margin: 0; font-size: 2rem; color: #1a1a1a;">PAINEL LDO</h1>
+    </div>
+
+    <div class="dash-header-logo" style="flex: 1; display: flex; justify-content: flex-end; padding-right: 40px;">
+      <!-- padding-right: 40px empurra a logo para a esquerda -->
+      <img src="${logoUrl}" alt="Governo de Minas Gerais" class="dash-logo" style="height: 85px; width: auto;" />
+    </div>
+
+  </div>
+`;
+return {cabecalho};
+}});
+
+define({id: "a38bfd5c", inputs: ["cabecalho","display"], body: async (cabecalho,display) => {
+display(await(
+cabecalho
+))
+}});
+
+define({id: "631c7e96", mode: "inline", inputs: ["KpiCard","sum2026","fmtPct","varPct2526","varPct2627","display"], body: async (KpiCard,sum2026,fmtPct,varPct2526,varPct2627,display) => {
+display(await(
+KpiCard({ label: "2026 Reestimativa", value: sum2026, format: "brl",
+      subtitle: `Δ ${fmtPct(varPct2526)} comparado a 2025`,
+      color: "#2563eb",
+      icon: "", labelSize: "13px", labelWeight: "800",
+      trend: varPct2627, trendLabel: "vs 2027 LDO" })
+))
+}});
+
+define({id: "3741611c", mode: "inline", inputs: ["KpiCard","sumSiafi","d3","execPct","display"], body: async (KpiCard,sumSiafi,d3,execPct,display) => {
+display(await(
+KpiCard({ label: "SIAFI 2026", value: sumSiafi, format: "brl",
+      subtitle: `Execução: ${d3.format(".1%")(execPct)} do Reestimado`,
+      color: "#7c3aed",
+      icon: "", labelSize: "13px", labelWeight: "800" })
+))
+}});
+
+define({id: "46f8fc45", mode: "inline", inputs: ["KpiCard","sum2027","fmtPct","varPct2627","display"], body: async (KpiCard,sum2027,fmtPct,varPct2627,display) => {
+display(await(
+KpiCard({ label: "2027 LDO", value: sum2027, format: "brl",
+      subtitle: `Δ ${fmtPct(varPct2627)} vs 2026 Reest.`,
+      color: "#0891b2",
+      icon: "", labelSize: "13px", labelWeight: "800" })
+))
+}});
+
+define({id: "e339cbe2", mode: "inline", inputs: ["KpiCard","nOK","d3","nLinhas","display"], body: async (KpiCard,nOK,d3,nLinhas,display) => {
+display(await(
+KpiCard({ label: "Linhas com Status OK", value: nOK, format: "int",
+      subtitle: `${d3.format(".1%")(nLinhas > 0 ? nOK / nLinhas : 0)} do total filtrado`,
+      color: "#059669", icon: "✅" })
+))
+}});
+
+define({id: "1f47d9fa", mode: "inline", inputs: ["KpiCard","nDiscrepantes","d3","nLinhas","display"], body: async (KpiCard,nDiscrepantes,d3,nLinhas,display) => {
+display(await(
+KpiCard({ label: "Valores Discrepantes", value: nDiscrepantes, format: "int",
+      subtitle: `${d3.format(".1%")(nLinhas > 0 ? nDiscrepantes / nLinhas : 0)} do total filtrado`,
+      color: "#b45309", icon: "⚠️" })
+))
+}});
+
+define({id: "164e3dcb", mode: "inline", inputs: ["KpiCard","nAtencao","d3","nLinhas","display"], body: async (KpiCard,nAtencao,d3,nLinhas,display) => {
+display(await(
+KpiCard({ label: "Atenção", value: nAtencao, format: "int",
+      subtitle: `${d3.format(".1%")(nLinhas > 0 ? nAtencao / nLinhas : 0)} do total filtrado`,
+      color: "#d97706", icon: "🟠" })
+))
+}});
+
+define({id: "c117f8b8", mode: "inline", inputs: ["inputUO","display"], body: async (inputUO,display) => {
+display(await(
+inputUO
+))
+}});
+
+define({id: "6eb1663f", mode: "inline", inputs: ["inputFonte","display"], body: async (inputFonte,display) => {
+display(await(
+inputFonte
+))
+}});
+
+define({id: "d0627985", mode: "inline", inputs: ["inputAlerta","display"], body: async (inputAlerta,display) => {
+display(await(
+inputAlerta
+))
+}});
+
+define({id: "d566c0e9", inputs: ["buildTable","allFiltered","fmtBRL","fmtN","display"], body: async (buildTable,allFiltered,fmtBRL,fmtN,display) => {
+display(await(
+buildTable(allFiltered, { fmtBRL, fmtN })
+))
+}});
+
+define({id: "149e2f16", mode: "inline", inputs: ["resize","HorizontalBarChart","topUOs","display"], body: async (resize,HorizontalBarChart,topUOs,display) => {
+display(await(
+resize(width => HorizontalBarChart(topUOs, { width, fill: "#8b1a1a" }))
+))
+}});
+
+define({id: "69be6af9", mode: "inline", inputs: ["resize","Plot","d3","evolucao","corEvolucao","fmtBRL","display"], body: async (resize,Plot,d3,evolucao,corEvolucao,fmtBRL,display) => {
+display(await(
+resize(width => Plot.plot({
+      width,
+      height      : 280,
+      marginLeft  : 50,
+      marginBottom: 40,
+      style: { fontFamily: "var(--sans-serif, system-ui)", fontSize: "11px", background: "transparent" },
+      x: { label: null, tickSize: 0 },
+      y: {
+        label: null,
+        tickFormat: v => v >= 1e9
+          ? d3.format(",.1f")(v / 1e9) + "Bi"
+          : d3.format(",.1f")(v / 1e6) + "Mi",
+      },
+      marks: [
+        Plot.barY(evolucao, {
+          x: "ano", y: "valor",
+          fill: d => corEvolucao[d.ano] ?? "#8b1a1a",
+          fillOpacity: 0.9,
+          rx: 4,
+          tip: { format: { y: v => fmtBRL(v) } },
+        }),
+        Plot.text(evolucao, {
+          x: "ano", y: "valor",
+          text: d => fmtBRL(d.valor),
+          dy: -8, textAnchor: "middle",
+          fill: "var(--theme-foreground-muted, #94a3b8)",
+          fontSize: 10,
+        }),
+        Plot.ruleY([0]),
+      ],
+    }))
+))
+}});
+
+define({id: "c915c7e5", inputs: ["Inputs","DIMENSOES","METRICAS_CAMPOS","AGREGACOES"], outputs: ["pvInputDim","pvInputCampo","pvInputAgreg"], body: (Inputs,DIMENSOES,METRICAS_CAMPOS,AGREGACOES) => {
+// ── Controles da pivot ───────────────────────────────────────────────────────
+const pvInputDim = Inputs.select(
+  DIMENSOES.map(d => d.key),
+  {
+    label  : null,
+    format : key => DIMENSOES.find(d => d.key === key)?.label ?? key,
+    value  : "uo_sigla",
+  }
+);
+
+const pvInputCampo = Inputs.select(
+  METRICAS_CAMPOS.map(d => d.key),
+  {
+    label  : null,
+    format : key => METRICAS_CAMPOS.find(d => d.key === key)?.label ?? key,
+    value  : "val2027",
+  }
+);
+
+const pvInputAgreg = Inputs.select(
+  AGREGACOES.map(d => d.key),
+  {
+    label  : null,
+    format : key => AGREGACOES.find(d => d.key === key)?.label ?? key,
+    value  : "soma",
+  }
+);
+return {pvInputDim,pvInputCampo,pvInputAgreg};
+}});
+
+define({id: "c458df4b", inputs: ["Generators","pvInputDim","pvInputCampo","pvInputAgreg"], outputs: ["pvDim","pvCampo","pvAgreg"], body: (Generators,pvInputDim,pvInputCampo,pvInputAgreg) => {
+const pvDim   = Generators.input(pvInputDim);
+const pvCampo = Generators.input(pvInputCampo);
+const pvAgreg = Generators.input(pvInputAgreg);
+return {pvDim,pvCampo,pvAgreg};
+}});
+
+define({id: "da33ea6e", mode: "inline", inputs: ["pvInputDim","display"], body: async (pvInputDim,display) => {
+display(await(
+pvInputDim
+))
+}});
+
+define({id: "a81d6140", mode: "inline", inputs: ["pvInputCampo","display"], body: async (pvInputCampo,display) => {
+display(await(
+pvInputCampo
+))
+}});
+
+define({id: "956aef67", mode: "inline", inputs: ["pvInputAgreg","display"], body: async (pvInputAgreg,display) => {
+display(await(
+pvInputAgreg
+))
+}});
+
+define({id: "9456dea4", inputs: ["buildPivotTable","allFiltered","pvDim","pvCampo","pvAgreg","display"], body: async (buildPivotTable,allFiltered,pvDim,pvCampo,pvAgreg,display) => {
+display(await(
+buildPivotTable(allFiltered, {
+  dimKey   : pvDim,
+  campoKey : pvCampo,
+  agregKey : pvAgreg,
+})
+))
+}});
+
+</script>
+</head>
+<body>
+<div id="observablehq-center">
+<main id="observablehq-main" class="observablehq">
+<div class="observablehq observablehq--block"><!--:0b3c836e:--></div>
+<div class="observablehq observablehq--block"><!--:8a9b0c55:--></div>
+<div class="observablehq observablehq--block"><!--:65b4b6ce:--></div>
+<div class="observablehq observablehq--block"><!--:66fc64d9:--></div>
+<div class="observablehq observablehq--block"><!--:dfa758e4:--></div>
+<div class="observablehq observablehq--block"><!--:a4ddd4a6:--></div>
+<div class="observablehq observablehq--block"><!--:02dd4550:--></div>
+<div class="observablehq observablehq--block"><!--:9f711d8c:--></div>
+<div class="observablehq observablehq--block"><!--:3a2bc0ca:--></div>
+<div class="observablehq observablehq--block"><!--:0098b0c8:--></div>
+<div class="observablehq observablehq--block"><observablehq-loading></observablehq-loading><!--:a38bfd5c:--></div>
+<!--- ══════════════════════════════════════
+      KPI CARDS — linha 1
+══════════════════════════════════════ -->
+<div class="grid grid-cols-3">
+  <div class="card">
+    <observablehq-loading></observablehq-loading><!--:631c7e96:-->
+  </div>
+  <div class="card">
+    <observablehq-loading></observablehq-loading><!--:3741611c:-->
+  </div>
+  <div class="card">
+    <observablehq-loading></observablehq-loading><!--:46f8fc45:-->
+  </div>
+</div>
+<!--- KPI CARDS — linha 2 (alertas) -->
+<div class="grid grid-cols-3">
+  <div class="card">
+    <observablehq-loading></observablehq-loading><!--:e339cbe2:-->
+  </div>
+  <div class="card">
+    <observablehq-loading></observablehq-loading><!--:1f47d9fa:-->
+  </div>
+  <div class="card">
+    <observablehq-loading></observablehq-loading><!--:164e3dcb:-->
+  </div>
+</div>
+<hr>
+<h2 id="filtros" tabindex="-1"><a class="observablehq-header-anchor" href="#filtros">Filtros</a></h2>
+<div class="grid grid-cols-3">
+  <div class="filtro-bloco">
+    <span class="filtro-label">Unidade Orçamentária</span>
+    <observablehq-loading></observablehq-loading><!--:c117f8b8:-->
+  </div>
+  <div class="filtro-bloco">
+    <span class="filtro-label">Fonte de Recursos</span>
+    <observablehq-loading></observablehq-loading><!--:6eb1663f:-->
+  </div>
+  <div class="filtro-bloco">
+    <span class="filtro-label">Tipo de Alerta</span>
+    <observablehq-loading></observablehq-loading><!--:d0627985:-->
+  </div>
+</div>
+<hr>
+<h2 id="analise-das-receitas" tabindex="-1"><a class="observablehq-header-anchor" href="#analise-das-receitas">Análise das Receitas</a></h2>
+<div class="observablehq observablehq--block"><observablehq-loading></observablehq-loading><!--:d566c0e9:--></div>
+<hr>
+<div class="grid grid-cols-2">
+  <div class="card">
+    <p class="chart-title">Top 10 UOs — 2027 LDO</p>
+    <observablehq-loading></observablehq-loading><!--:149e2f16:-->
+  </div>
+  <div class="card">
+    <p class="chart-title">Evolução da Receita Total</p>
+    <observablehq-loading></observablehq-loading><!--:69be6af9:-->
+  </div>
+</div>
+<hr>
+<h2 id="tabela-interativa" tabindex="-1"><a class="observablehq-header-anchor" href="#tabela-interativa">Tabela Interativa</a></h2>
+<div class="observablehq observablehq--block"><!--:c915c7e5:--></div>
+<div class="observablehq observablehq--block"><!--:c458df4b:--></div>
+<div class="grid grid-cols-3">
+  <div class="filtro-bloco">
+    <span class="filtro-label">Agrupar por (Dimensão)</span>
+    <observablehq-loading></observablehq-loading><!--:da33ea6e:-->
+  </div>
+  <div class="filtro-bloco">
+    <span class="filtro-label">Campo de Valor</span>
+    <observablehq-loading></observablehq-loading><!--:a81d6140:-->
+  </div>
+  <div class="filtro-bloco">
+    <span class="filtro-label">Agregação</span>
+    <observablehq-loading></observablehq-loading><!--:956aef67:-->
+  </div>
+</div>
+<div class="observablehq observablehq--block"><observablehq-loading></observablehq-loading><!--:9456dea4:--></div>
+<style>
+/* ══════════════════════════════════════════
+   CABEÇALHO — gradiente bordô institucional
+══════════════════════════════════════════ */
+.dash-header {
+  display        : flex;
+  align-items    : center;
+  justify-content: space-between;
+  gap            : 16px;
+  padding        : 16px 32px;
+  margin-bottom  : 0.75rem;
+  border-radius  : 10px;
+  background     : linear-gradient(120deg, #6b1111 0%, #8b1a1a 55%, #a0281f 100%);
+  box-shadow     : 0 4px 18px rgba(107, 17, 17, 0.28);
+}
+
+/* Coluna fantasma — mesma largura da logo para centralizar o título */
+.dash-header-spacer {
+  flex     : 0 0 200px;
+  min-width: 0;
+}
+
+.dash-header-center {
+  flex      : 1 1 0;
+  text-align: center;
+  min-width : 0;
+}
+
+/* "SEPLAG — SPLOR" — rosa claro sobre bordô */
+.dash-eyebrow {
+  margin         : 0 0 6px;
+  font-family    : var(--sans-serif, system-ui, sans-serif);
+  font-size      : 11px;
+  font-weight    : 600;
+  text-transform : uppercase;
+  letter-spacing : .14em;
+  color          : #f4b8b8;
+}
+
+/* Título principal — branco sobre gradiente */
+.dash-title {
+  margin         : 0 !important;
+  font-family    : var(--sans-serif, system-ui, sans-serif) !important;
+  font-size      : 32px !important;
+  font-weight    : 900 !important;
+  text-transform : uppercase !important;
+  letter-spacing : .06em !important;
+  color          : #ffffff !important;
+  line-height    : 1.05 !important;
+  white-space    : nowrap !important;
+}
+
+/* Coluna da logo */
+.dash-header-logo {
+  flex           : 0 0 200px;
+  min-width      : 0;
+  display        : flex;
+  align-items    : center;
+  justify-content: flex-end;
+}
+
+/* Logo com brilho suave para destacar sobre fundo escuro */
+.dash-logo {
+  max-height : 52px;
+  max-width  : 200px;
+  object-fit : contain;
+  filter     : brightness(1.08) drop-shadow(0 1px 4px rgba(0,0,0,0.25));
+}
+
+/* ══════════════════════════════════════════
+   TÍTULOS DE SEÇÃO — h2
+══════════════════════════════════════════ */
+h2 {
+  font-family    : var(--sans-serif, system-ui, sans-serif) !important;
+  font-size      : 21px !important;
+  font-weight    : 800 !important;
+  text-transform : uppercase !important;
+  letter-spacing : .09em !important;
+  color          : #8b1a1a !important;
+  margin-top     : 2rem !important;
+}
+
+/* ══════════════════════════════════════════
+   TÍTULOS INTERNOS DOS GRÁFICOS
+══════════════════════════════════════════ */
+.chart-title {
+  margin         : 0 0 14px;
+  font-family    : var(--sans-serif, system-ui, sans-serif);
+  font-size      : 11px;
+  font-weight    : 800;
+  text-transform : uppercase;
+  letter-spacing : .09em;
+  color          : #8b1a1a;
+}
+
+/* ══════════════════════════════════════════
+   FILTROS — título acima + input estilizado
+══════════════════════════════════════════ */
+
+/* Wrapper: empilha título + campo verticalmente */
+.filtro-bloco {
+  display       : flex;
+  flex-direction: column;
+  gap           : 6px;
+}
+
+/* Título acima do campo — preto, caixa alta, negrito */
+.filtro-label {
+  font-family    : var(--sans-serif, system-ui, sans-serif);
+  font-size      : 11px;
+  font-weight    : 900;
+  text-transform : uppercase;
+  letter-spacing : .08em;
+  color          : #111111;
+}
+
+/* Oculta o label interno gerado automaticamente pelo Observable */
+.filtro-bloco .observablehq--input label {
+  display: none !important;
+}
+
+/* Garante que o wrapper do input ocupe 100% da coluna */
+.filtro-bloco .observablehq--input,
+.filtro-bloco .observablehq--input form {
+  width: 100%;
+}
+
+/* Estilo dos campos — texto e select */
+.filtro-bloco .observablehq--input input[type="text"],
+.filtro-bloco .observablehq--input select {
+  width        : 100%;
+  box-sizing   : border-box;
+  border       : 1.5px solid var(--theme-foreground-faintest, #e2e8f0);
+  border-radius: 8px;
+  padding      : 7px 11px;
+  font-size    : 13px;
+  background   : var(--theme-background, #ffffff);
+  color        : var(--theme-foreground, #111111);
+  outline      : none;
+  transition   : border-color .15s, box-shadow .15s;
+}
+
+/* Foco: borda e halo em bordô */
+.filtro-bloco .observablehq--input input[type="text"]:focus,
+.filtro-bloco .observablehq--input select:focus {
+  border-color: #8b1a1a;
+  box-shadow  : 0 0 0 3px rgba(139, 26, 26, 0.12);
+}
+
+/* Placeholder suave */
+.filtro-bloco .observablehq--input input[type="text"]::placeholder {
+  color  : var(--theme-foreground-faint, #94a3b8);
+  opacity: 1;
+}
+
+/* ══════════════════════════════════════════
+   PIVOT — select sem label herda filtro-bloco
+══════════════════════════════════════════ */
+.filtro-bloco .observablehq--input select {
+  appearance    : auto;
+  cursor        : pointer;
+}
+</style>
+</main>
+<footer id="observablehq-footer">
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2026-05-04T18:37:49">May 4, 2026</a>.</div>
+</footer>
+</div>
+</body>
+</html>
