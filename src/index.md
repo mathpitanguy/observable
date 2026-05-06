@@ -5,18 +5,14 @@ title: Painel LDO
 ---
 
 ```js
+import { buildDynamicTable } from "./components/dynamicTable.js";
 import * as d3                from "npm:d3";
 import * as Plot              from "npm:@observablehq/plot";
 import { html }               from "npm:htl";
 import { KpiCard }            from "./components/kpiCard.js";
 import { buildTable }         from "./components/revenueTable.js";
 import { HorizontalBarChart } from "./components/revenueChart.js";
-import {
-  buildPivotTable,
-  DIMENSOES,
-  METRICAS_CAMPOS,
-  AGREGACOES,
-}                             from "./components/pivotTable.js";
+
 ```
 
 ```js
@@ -279,67 +275,6 @@ buildTable(allFiltered, { fmtBRL, fmtN })
 
 ---
 
-## Tabela Interativa
-
-```js
-// ── Controles da pivot ───────────────────────────────────────────────────────
-const pvInputDim = Inputs.select(
-  DIMENSOES.map(d => d.key),
-  {
-    label  : null,
-    format : key => DIMENSOES.find(d => d.key === key)?.label ?? key,
-    value  : "uo_sigla",
-  }
-);
-
-const pvInputCampo = Inputs.select(
-  METRICAS_CAMPOS.map(d => d.key),
-  {
-    label  : null,
-    format : key => METRICAS_CAMPOS.find(d => d.key === key)?.label ?? key,
-    value  : "val2027",
-  }
-);
-
-const pvInputAgreg = Inputs.select(
-  AGREGACOES.map(d => d.key),
-  {
-    label  : null,
-    format : key => AGREGACOES.find(d => d.key === key)?.label ?? key,
-    value  : "soma",
-  }
-);
-```
-
-```js
-const pvDim   = Generators.input(pvInputDim);
-const pvCampo = Generators.input(pvInputCampo);
-const pvAgreg = Generators.input(pvInputAgreg);
-```
-
-<div class="grid grid-cols-3">
-  <div class="filtro-bloco">
-    <span class="filtro-label">Agrupar por (Dimensão)</span>
-    ${pvInputDim}
-  </div>
-  <div class="filtro-bloco">
-    <span class="filtro-label">Campo de Valor</span>
-    ${pvInputCampo}
-  </div>
-  <div class="filtro-bloco">
-    <span class="filtro-label">Agregação</span>
-    ${pvInputAgreg}
-  </div>
-</div>
-
-```js
-buildPivotTable(allFiltered, {
-  dimKey   : pvDim,
-  campoKey : pvCampo,
-  agregKey : pvAgreg,
-})
-```
-
 <style>
 /* ══════════════════════════════════════════
    CABEÇALHO — gradiente bordô institucional
@@ -461,7 +396,7 @@ h2 {
   display: none !important;
 }
 
-/* Garante que o wrapper do input ocupe 100% da coluna */
+/* Garante que o wrapper do input ocupe 100% da coluna
 .filtro-bloco .observablehq--input,
 .filtro-bloco .observablehq--input form {
   width: 100%;
@@ -503,3 +438,18 @@ h2 {
   cursor        : pointer;
 }
 </style>
+
+## Tabela Dinâmica
+
+```js
+const dynTable = buildDynamicTable(allFiltered);
+
+```
+
+```js
+dynTable.update(allFiltered);
+```
+
+```js
+dynTable
+```
